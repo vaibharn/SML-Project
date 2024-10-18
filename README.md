@@ -1,1 +1,1 @@
-Go to templateArxiv.pdf to find the PDF of the report.
+Go to templateArxiv.pdf in the milestone_report to find the PDF
