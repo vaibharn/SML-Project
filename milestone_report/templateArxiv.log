@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.19)  16 OCT 2024 21:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.19)  18 OCT 2024 07:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -331,24 +331,24 @@ File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ) (templateArxiv.aux)
 \openout1 = `templateArxiv.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -416,24 +416,24 @@ LaTeX Font Info:    ... okay on input line 45.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 45.
+Package hyperref Info: Link coloring OFF on input line 54.
 (templateArxiv.out) (templateArxiv.out)
 \@outlinefile=\write3
 \openout3 = `templateArxiv.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 45.
-Package microtype Info: Applying patch `item' on input line 45.
-Package microtype Info: Applying patch `toc' on input line 45.
-Package microtype Info: Applying patch `eqnum' on input line 45.
-Package microtype Info: Applying patch `footnote' on input line 45.
-Package microtype Info: Applying patch `verbatim' on input line 45.
+LaTeX Info: Redefining \microtypecontext on input line 54.
+Package microtype Info: Applying patch `item' on input line 54.
+Package microtype Info: Applying patch `toc' on input line 54.
+Package microtype Info: Applying patch `eqnum' on input line 54.
+Package microtype Info: Applying patch `footnote' on input line 54.
+Package microtype Info: Applying patch `verbatim' on input line 54.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 45.
+LaTeX Info: Redefining \showhyphens on input line 54.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -470,7 +470,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
 
 
 (C:\Users\vaibh\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -479,7 +479,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\vaibh\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
 
 
 (C:\Users\vaibh\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -488,8 +488,8 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (C:\Users\vaibh\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-7.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
+6.
 
 (C:\Users\vaibh\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
@@ -503,14 +503,14 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 
 {C:/Users/vaibh/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/vaib
-h/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+h/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-27.
+41.
 
 (C:\Users\vaibh\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-[2] (templateArxiv.bbl) [3] (templateArxiv.aux)
+(templateArxiv.bbl) [3] (templateArxiv.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -519,13 +519,13 @@ Package rerunfilecheck Info: File `templateArxiv.out' has not changed.
 (rerunfilecheck)             Checksum: 05C75C51C9A284113B85DE3505322E19;1270.
  ) 
 Here is how much of TeX's memory you used:
- 12296 strings out of 474486
- 201168 string characters out of 5743755
- 1939542 words of memory out of 5000000
- 34214 multiletter control sequences out of 15000+600000
- 607744 words of font info for 185 fonts, out of 8000000 for 9000
+ 12250 strings out of 474486
+ 200188 string characters out of 5743755
+ 1940542 words of memory out of 5000000
+ 34186 multiletter control sequences out of 15000+600000
+ 598428 words of font info for 163 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,11n,93p,1012b,526s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,11n,93p,1012b,486s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\vaibh\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
 1000.pk><C:/Users/vaibh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmex10.pfb><C:/Users/vaibh/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -536,14 +536,12 @@ s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/vaibh/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/vaibh/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/vaibh
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Us
-ers/vaibh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pf
-b><C:/Users/vaibh/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pf
-b><C:/Users/vaibh/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pf
-b><C:/Users/vaibh/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.p
-fb>
-Output written on templateArxiv.pdf (3 pages, 160487 bytes).
+ers/vaibh/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Us
+ers/vaibh/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Us
+ers/vaibh/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on templateArxiv.pdf (3 pages, 151799 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
+ 169 PDF objects out of 1000 (max. 8388607)
  23 named destinations out of 1000 (max. 500000)
- 53321 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 44105 words of extra memory for PDF output out of 51595 (max. 10000000)
 
