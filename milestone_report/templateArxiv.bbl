@@ -1,22 +1,23 @@
 \begin{thebibliography}{1}
 
-\bibitem{kour2014real}
-George Kour and Raid Saabne.
-\newblock Real-time segmentation of on-line handwritten arabic script.
-\newblock In {\em Frontiers in Handwriting Recognition (ICFHR), 2014 14th
-  International Conference on}, pages 417--422. IEEE, 2014.
+\bibitem{dhariwal2021}
+Dhariwal P and Nichol A.
+\newblock Diffusion models beat gans on image synthesis.
+\newblock {\em Advances in Neural Information Processing Systems, 34, 8780-8794}, 2021.
+
+\bibitem{sohl2015}
+Maheswaranathan~N. Sohl-Dickstein~J., Weiss E.~A. and S~Ganguli.
+\newblock Deep unsupervised learning using nonequilibrium thermodynamics.
+\newblock {\em International Conference on Machine Learning, 2256-2265}, 2015.
 
 \bibitem{kour2014fast}
 George Kour and Raid Saabne.
 \newblock Fast classification of handwritten on-line arabic characters.
-\newblock In {\em Soft Computing and Pattern Recognition (SoCPaR), 2014 6th
-  International Conference of}, pages 312--318. IEEE, 2014.
+\newblock In {\em Soft Computing and Pattern Recognition (SoCPaR), 2014 6th International Conference of}, pages 312--318. IEEE, 2014.
 
 \bibitem{hadash2018estimate}
-Guy Hadash, Einat Kermany, Boaz Carmeli, Ofer Lavi, George Kour, and Alon
-  Jacovi.
-\newblock Estimate and replace: A novel approach to integrating deep neural
-  networks with existing applications.
+Guy Hadash, Einat Kermany, Boaz Carmeli, Ofer Lavi, George Kour, and Alon Jacovi.
+\newblock Estimate and replace: A novel approach to integrating deep neural networks with existing applications.
 \newblock {\em arXiv preprint arXiv:1804.09028}, 2018.
 
 \end{thebibliography}
