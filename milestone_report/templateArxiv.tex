@@ -14,6 +14,7 @@
 \usepackage{lipsum}
 \usepackage{fancyhdr}       % header
 \usepackage{graphicx}       % graphics
+\usepackage{amsmath}
 \graphicspath{{media/}}     % organize your images and other figures under media/ folder
 
 %Header
@@ -22,7 +23,7 @@
 \rhead{ \textit{ }} 
 
 % Update your Headers here
-\fancyhead[LO]{Running Title for Header}
+\fancyhead[LO]{Comparative Analysis of Diffusion Models for Image Generation}
 % \fancyhead[RE]{Firstauthor and Secondauthor} % Firstauthor et al. if more than 2 - must use \documentclass[twoside]{article}
 
 
@@ -80,12 +81,87 @@ from textual descriptions. Our project "Comparative Analysis of Diffusion Models
 need to understand the strengths and weaknesses of different diffusion model architectures. These models are evolving rapidly, and a 
 comprehensive comparison is crucial and beneficial to both researchers and practitioners in this field.
 
+To conduct this comparison and analysis, we will be using a range of quantitative metrics that have become a standard 
+in evaluating such image generation models. The metrics we use will include Inception Score(IS), Fréchet Inception Distance(FID),
+Contrastive Language-Image Pre-training(CLIP), Text-to-Image Faithfulness evaluation with question Answering(TIFA), and 
+CLIP Maximum Mean Discrepancy(CMMD). 
 
+By utilizing these metrics, we aim to provide a nuanced understanding of how different diffusion models fare across different aspects
+of image generation. This will help researchers and practitioners in the field to select the right diffusion model for their work. 
 
 
 
 \section{Related Work}
-Literature Review goes here
+
+The evaluation of diffusion models for image generation is an active area of research with different metrics to assess the various
+aspects of images generated. The key metrics we will be using in our comparison are:
+
+\subsection{Inception Score (IS)}
+
+Introduced by Salimans et al. \cite{salimans2016improved}, the Inception Score measures the quality and diversity of the images generated.
+It was initially designed for GANs but it can be used for any image generation models. It uses a pre-trained Inception v3 network to 
+evaluate how well the generated images can be classified into distinct categories. The IS is calculated as:
+
+\begin{equation}
+    IS = \exp(\mathbb{E}_x[KL(p(y|x) || p(y))])
+\end{equation}
+
+where $p(y|x)$ is the conditional label distribution for generated images, and $p(y)$ is the marginal label distribution over all generated images.
+A higher IS score tells us that the image is more diverse and realistic.
+
+
+\subsection{Fréchet Inception Distance (FID)}
+
+Proposed by Heusel et al. \cite{heusel2017gans}, FID is a combination of Fréchet distance and features extracted from the 
+Inception-v3 model. FID was introduced after IS and addresses some of its limitations.
+FID calculates the distance between the feature representations of the generated and real image distributions:
+
+\begin{equation}
+    FID = ||\mu_r - \mu_g||^2 + Tr(\Sigma_r + \Sigma_g - 2(\Sigma_r \Sigma_g)^{1/2})
+\end{equation}
+
+where $\mu_r, \Sigma_r$ are the mean and covariance of the real image features, and $\mu_g, \Sigma_g$ are those of the generated images.
+ Lower FID scores suggest that the generated images are closer to real images in terms of quality and diversity.
+
+\subsection{CLIP Score}
+
+Leveraging the CLIP (Contrastive Language-Image Pre-training) model developed by Radford et al. \cite{radford2021learning}, 
+the CLIP Score assesses how well images are generated and align with their text prompts:
+
+\begin{equation}
+    CLIP\_Score = \cos(CLIP_{text}(prompt), CLIP_{image}(generated\_image))
+\end{equation}
+
+where $\cos$ is the cosine similarity between the CLIP embeddings of the text prompt and the generated image.
+A higher CLIP score means that the generated image matches better with the text prompt.
+
+\subsection{CLIP-Maximum Mean Discrepancy}
+
+CLIP-MMD(CMMD) is an extension of the CLIP score and uses Maximum Mean Discrepancy (MMD) to measure the distance between the 
+CLIP embeddings of generated and real images \cite{gao2022measuring}:
+
+\begin{equation}
+    CLIP\text{-}MMD = MMD(CLIP_{image}(real\_images), CLIP_{image}(generated\_images))
+\end{equation}
+
+A lower CMMD score means that the generated images are closer to the real images in terms of feature space distribution. CMMD claims to 
+fix some of the limitations of FID \cite{rethinkingFID2024}.
+
+\subsection{TIFA (Text-to-Image Faithfulness evaluation with question Answering)}
+
+Introduced by Yang et al. \cite{yang2022empirical}, TIFA measures how faitfully a generated image represents its text prompt.
+It uses visual question answering to evaluate how well the generated image captures the information from their textual descriptions:
+
+\begin{equation}
+    TIFA\_Score = Accuracy(VQA_{model}(generated\_image, question\_from\_prompt))
+\end{equation}
+
+where the VQA model answers questions derived from the original text prompt based on the generated image. 
+TIFA is a fairly new metric and compared to other traditional metrics, offers a more fine-grained assessment of text-image alignment.
+
+When these metrics are used in combination to evaluate our diffusion models, we can assess the quality, diversity and faithfulness
+to text prompts of the images generated.
+
 
 \section{Progress}
 
@@ -109,6 +185,7 @@ Literature Review goes here
 \lipsum[6]
 
 \paragraph{Paragraph}
+
 \lipsum[7]
 
 \section{Examples of citations, figures, tables, references}

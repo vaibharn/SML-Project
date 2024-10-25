@@ -10,14 +10,35 @@ Maheswaranathan~N. Sohl-Dickstein~J., Weiss E.~A. and S~Ganguli.
 \newblock Deep unsupervised learning using nonequilibrium thermodynamics.
 \newblock {\em International Conference on Machine Learning, 2256-2265}, 2015.
 
-\bibitem{kour2014fast}
-George Kour and Raid Saabne.
-\newblock Fast classification of handwritten on-line arabic characters.
-\newblock In {\em Soft Computing and Pattern Recognition (SoCPaR), 2014 6th International Conference of}, pages 312--318. IEEE, 2014.
+\bibitem{salimans2016improved}
+Tim Salimans, Ian Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, and Xi~Chen.
+\newblock Improved techniques for training gans.
+\newblock In {\em Advances in Neural Information Processing Systems}, volume~29, 2016.
 
-\bibitem{hadash2018estimate}
-Guy Hadash, Einat Kermany, Boaz Carmeli, Ofer Lavi, George Kour, and Alon Jacovi.
-\newblock Estimate and replace: A novel approach to integrating deep neural networks with existing applications.
-\newblock {\em arXiv preprint arXiv:1804.09028}, 2018.
+\bibitem{heusel2017gans}
+Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter.
+\newblock Gans trained by a two time-scale update rule converge to a local nash equilibrium.
+\newblock In {\em Advances in Neural Information Processing Systems}, volume~30, 2017.
+
+\bibitem{radford2021learning}
+Alec Radford, Jong~Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, et~al.
+\newblock Learning transferable visual models from natural language supervision.
+\newblock {\em International Conference on Machine Learning}, 2021.
+
+\bibitem{gao2022measuring}
+Ruocheng Gao, Xiaoyuan Guo, Kristen Grauman, and Matt Kusner.
+\newblock Measuring and mitigating unintended bias in image captioning.
+\newblock {\em arXiv preprint arXiv:2211.13449}, 2022.
+
+\bibitem{rethinkingFID2024}
+Andreas Veit Daniel Glasner Ayan Chakrabarti Sanjiv~Kumar Sadeep~Jayasumana, Srikumar~Ramalingam.
+\newblock Rethinking fid: Towards a better evaluation metric for image generation.
+\newblock {\em arXiv preprint arXiv:2401.09603v2}, 2024.
+\newblock License: CC BY-NC-SA 4.0.
+
+\bibitem{yang2022empirical}
+Zhengyuan Yang, Zhe Gan, Jianfeng Wang, Xiaowei Hu, Yumao Lu, Zicheng Liu, and Lijuan Wang.
+\newblock An empirical study of gpt-3 for few-shot knowledge-based vqa.
+\newblock In {\em Proceedings of the AAAI Conference on Artificial Intelligence}, volume~36, pages 3335--3343, 2022.
 
 \end{thebibliography}
