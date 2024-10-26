@@ -48,7 +48,7 @@
   \texttt{umadhava@asu.edu}\\
   \and
   Ansh Sharma\\
-  \texttt{ansh@asu.edu}
+  \texttt{ashar479@asu.edu}
 }
 
 
@@ -94,10 +94,10 @@ of image generation. This will help researchers and practitioners in the field t
 
 \section{Related Work}
 Recent advancements in diffusion models have focused on improving various aspects such as 
-architecture, scale, efficiency, training techniques, and controllability. This comparative study aims to evaluate state-of-the-art 
-diffusion-based text-to-image models across various metrics to assess their strengths, limitations, and potential synergies in the 
-domain of text-to-image generation. This section provides an overview of key developments in diffusion-based text-to-image generation, 
-with a focus on three prominent models; Stable Diffusion, FLUX.1, and Kwai-Kolors.
+architecture, scale, efficiency, training techniques, and controllability. This study aims to compare and evaluate state-of-the-art 
+diffusion-based text-to-image models across various metrics to assess their strengths, limitations, and potential similarities in the 
+domain of text-to-image generation. An overview of key developments in diffusion-based text-to-image generation is discussed in this section, 
+with a focus on three recent models; Stable Diffusion, FLUX.1, and Kwai-Kolors.
 
 Stable Diffusion, developed by Rombach et al. \cite{kulal2024stablediffusion}, introduced the concept of latent diffusion, that allows efficient training 
 and inference while maintaining high image quality. Rather than the traditional curved diffusion paths, a rectified flow formulation, which connects data and noise in straight line is used. A set of new noise samplers (Logit-Normal sampling, Mode sampling 
@@ -106,20 +106,20 @@ A novel transformer-based architecture called MM-DiT (Multimodal Diffusion Trans
 tasks was used in stable diffusion. This architecture uses separate weights for text and image modalities.
 
 FLUX.1, a recent development by Black Forest labs, tries to improve upon Stable Diffusion's capabilities by incorporating techniques such as rectified flow and parallel attention layers \cite{flux2024medium}. FLUX claims to offer enhanced speed, efficiency, 
-and prompt adherence compared to earlier diffusion models. All public FLUX.1 models are based on a hybrid architecture of multimodal 
-and parallel diffusion transformer blocks and scaled to 12B parameters. The model claims to improve over previous state-of-the-art diffusion 
+and prompt adherence compared to earlier diffusion models. FLUX.1 model is based on an architecture that consists of
+parallel and multimodal diffusion transformers with 12B parameters. The model claims to improve over previous state-of-the-art diffusion 
 models by building on flow matching, a general and conceptually simple method for training generative models, which includes 
 diffusion as a special case \cite{flux2024main}. In addition, the model claims to have increased model performance and improved hardware efficiency by 
 incorporating rotary positional embeddings and parallel attention layers.
 
-Kwai-Kolors is a large-scale text-to-image generation model based on latent diffusion, developed by the Kuaishou Kolors team. 
+Kwai-Kolors is a text-to-image generation model based on latent diffusion, developed by the Kuaishou Kolors team. 
 Kolors operates in a compressed latent space rather than pixel space, 
 which offers advantages in computational efficiency and generation quality \cite{kolors2024}. The model was trained on billions of text-image 
 pairs and demonstrates significant capabilities in visual quality, complex semantic accuracy, and text rendering for both 
 Chinese and English characters. The latent diffusion approach offers several advantages such as reduced computational complexity, improved 
 generation quality, and enhanced robustness to noise. the model architecture consists of three main components: a variational encoder 
 (VAE) for encoding and decoding images, a U-Net back bone for the diffusion process, and a noise-aware classifier-free guidance 
-mechanism. Kolors employs an 
+mechanism. Kolors uses an 
 adaptive noise schedule that adjusts the noise level based on the input image quality.
 
 Table 1 captures some of the characteristics of these models.
@@ -199,7 +199,7 @@ fix some of the limitations of FID \cite{rethinkingFID2024}.
 
 \subsection{TIFA (Text-to-Image Faithfulness evaluation with question Answering)}
 
-Introduced by Yang et al. \cite{yang2022empirical}, TIFA measures how faitfully a generated image represents its text prompt.
+Introduced by Yang et al. \cite{yang2022empirical}, TIFA measures how faithfully a generated image represents its text prompt.
 It uses visual question answering to evaluate how well the generated image captures the information from their textual descriptions:
 
 \begin{equation}
