@@ -222,9 +222,41 @@ to text prompts of the images generated.
 
 
 \section{Progress}
+For the Milestone 1 Report, we are about one week behind schedule as mentioned the timeline we estimated in the Project proposal because of more extensive literature review than expected. We have included the updated Execution Plan accordingly such that we are able to finish the project in stipulated time. The following subsections describe the tasks we have completed for the first milestone.
+
+\subsection{Survey of State of the Art Diffusion Models}
+We performed a comprehensive search and survey of the current open-source models available on the internet, more specifically on websites like HuggingFace.co, Github, civit.ai to identify the models we are going to perform this comparative study on. We selected FLUX.1[dev] by Black Forest Lab, Stable Diffusion 3 Medium by StabilityAI, and Kolors by Kuaishou Kolors.
+
+\subsection{Identification of Evaluation Metrics}
+As mentioned in the above section, we are going to use Inception Score, Fréchet Inception Distance, CLIP Score, CLIP-MMD, and TIFA for our comparative study.
+
+\subsection{Environment Setup for the Diffusion Models}
+We have created and activated virtual environments for each of the three models with all the required packages and libraries including PyTorch, Hugging Face Diffusers, CUDA. The model weights are ready to use for the evaluation step.
+
+
 
 
 \section{Execution Plan}
+This following timeline is the updated version taking into consideration the work done till first milestone.
+
+\subsection{Prompt Engineering (Week 6)}
+We will be creating sample text prompts for image generation in different categories such as
+people, multiple objects, landscapes, portraits.
+
+\subsection{Collection of Evaluation Metrics Data (Weeks 7 and 8)}
+In this phase, we will use identical prompts to generate images from all models and
+analyze them to evaluate the generated image output. We will implement and collect metrics for quantitative evaluation as discussed before.
+
+\subsection{Comparative Analysis (Week 9)}
+During this part of project, we will use different metrics and compare models on them along with assessing their performance by testing various batch sizes and image resolutions.
+
+\subsection{Results Compilation and Conclusions (Week 10)}
+Now we will start writing reports by collecting and analyzing the results data and perform
+statistical analysis to highlight significant differences between models. We will also use
+graphs and charts to further elaborate our results.
+
+\subsection{Report Writing and Presentation (Weeks 11 and 12)}
+Here, we will write a detailed report on highlighting results, and conclusions and simultaneously develop a presentation, we will also include a gallery of generated images for comparison. In the last week, an internal peer review will be conducted to finalize the report and presentation based on everyone’s feedback.
 
 
 
@@ -255,11 +287,11 @@ to text prompts of the images generated.
 
 Weekly meetings will be held to track progress and address challenges.
 
-\section{Execution Plan}
 
 %Bibliography
 \bibliographystyle{unsrt}  
 \bibliography{references}
+
 
 \section{Headings: first level}
 \label{sec:headings}
