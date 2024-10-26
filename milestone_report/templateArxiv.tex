@@ -131,7 +131,7 @@ adaptive noise schedule that adjusts the noise level based on the input image qu
 Kolors achieves faster training and inference times compared to pixel-space diffusion models. This feature enhances the model's robustness 
 to various levels of noise.
 
-The below table captures some of the characteristics of these models:
+Table 1 captures some of the characteristics of these models.
 
 \begin{table}
   \centering
@@ -225,10 +225,10 @@ to text prompts of the images generated.
 For the Milestone 1 Report, we are about one week behind schedule as mentioned the timeline we estimated in the Project proposal because of more extensive literature review than expected. We have included the updated Execution Plan accordingly such that we are able to finish the project in stipulated time. The following subsections describe the tasks we have completed for the first milestone.
 
 \subsection{Survey of State of the Art Diffusion Models}
-We performed a comprehensive search and survey of the current open-source models available on the internet, more specifically on websites like HuggingFace.co, Github, civit.ai to identify the models we are going to perform this comparative study on. We selected FLUX.1[dev] by Black Forest Lab, Stable Diffusion 3 Medium by StabilityAI, and Kolors by Kuaishou Kolors.
+We performed a comprehensive search and survey of the current open-source models available on the internet, more specifically on websites like HuggingFace.co, Github, civit.ai to identify the models we are going to perform this comparative study on. We selected FLUX.1[dev] by Black Forest Lab, Stable Diffusion 3 Medium by StabilityAI, and Kolors by Kuaishou Kolors team.
 
 \subsection{Identification of Evaluation Metrics}
-As mentioned in the above section, we are going to use Inception Score, Fréchet Inception Distance, CLIP Score, CLIP-MMD, and TIFA for our comparative study.
+As mentioned in section 4, we identified Inception Score, Fréchet Inception Distance, CLIP Score, CLIP-MMD, and TIFA to be the most relevant and effective our comparative study.
 
 \subsection{Environment Setup for the Diffusion Models}
 We have created and activated virtual environments for each of the three models with all the required packages and libraries including PyTorch, Hugging Face Diffusers, CUDA. The model weights are ready to use for the evaluation step.
@@ -239,23 +239,22 @@ We have created and activated virtual environments for each of the three models 
 \section{Execution Plan}
 This following timeline is the updated version taking into consideration the work done till first milestone.
 
-\subsection{Prompt Engineering (Week 6)}
-We will be creating sample text prompts for image generation in different categories such as
-people, multiple objects, landscapes, portraits.
+\textbf{Prompt Engineering (Week 6).}
+We will be creating sample text prompts for image generation in different categories such as people, multiple objects, landscapes, portraits.
 
-\subsection{Collection of Evaluation Metrics Data (Weeks 7 and 8)}
+\textbf{Collection of Evaluation Metrics Data (Weeks 7 and 8).}
 In this phase, we will use identical prompts to generate images from all models and
 analyze them to evaluate the generated image output. We will implement and collect metrics for quantitative evaluation as discussed before.
 
-\subsection{Comparative Analysis (Week 9)}
+\textbf{Comparative Analysis (Week 9).}
 During this part of project, we will use different metrics and compare models on them along with assessing their performance by testing various batch sizes and image resolutions.
 
-\subsection{Results Compilation and Conclusions (Week 10)}
+\textbf{Results Compilation and Conclusions (Week 10).}
 Now we will start writing reports by collecting and analyzing the results data and perform
 statistical analysis to highlight significant differences between models. We will also use
 graphs and charts to further elaborate our results.
 
-\subsection{Report Writing and Presentation (Weeks 11 and 12)}
+\textbf{Report Writing and Presentation (Weeks 11 and 12).}
 Here, we will write a detailed report on highlighting results, and conclusions and simultaneously develop a presentation, we will also include a gallery of generated images for comparison. In the last week, an internal peer review will be conducted to finalize the report and presentation based on everyone’s feedback.
 
 
@@ -286,100 +285,6 @@ Here, we will write a detailed report on highlighting results, and conclusions a
 \end{itemize}
 
 Weekly meetings will be held to track progress and address challenges.
-
-
-%Bibliography
-\bibliographystyle{unsrt}  
-\bibliography{references}
-
-
-\section{Headings: first level}
-\label{sec:headings}
-
-\lipsum[4] See Section \ref{sec:headings}.
-
-\subsection{Headings: second level}
-\lipsum[5]
-\begin{equation}
-\xi _{ij}(t)=P(x_{t}=i,x_{t+1}=j|y,v,w;\theta)= {\frac {\alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}{\sum _{i=1}^{N} \sum _{j=1}^{N} \alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}}
-\end{equation}
-
-\subsubsection{Headings: third level}
-\lipsum[6]
-
-\paragraph{Paragraph}
-
-\lipsum[7]
-
-\section{Examples of citations, figures, tables, references}
-\label{sec:others}
-\lipsum[8] \cite{dhariwal2021,kour2014fast} and see \cite{hadash2018estimate}.
-
-The documentation for \verb+natbib+ may be found at
-\begin{center}
-  \url{http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf}
-\end{center}
-Of note is the command \verb+\citet+, which produces citations
-appropriate for use in inline text.  For example,
-\begin{verbatim}
-   \citet{hasselmo} investigated\dots
-\end{verbatim}
-produces
-\begin{quote}
-  Hasselmo, et al.\ (1995) investigated\dots
-\end{quote}
-
-\begin{center}
-  \url{https://www.ctan.org/pkg/booktabs}
-\end{center}
-
-
-\subsection{Figures}
-\lipsum[10] 
-See Figure \ref{fig:fig1}. Here is how you add footnotes. \footnote{Sample of the first footnote.}
-\lipsum[11] 
-
-\begin{figure}
-  \centering
-  \fbox{\rule[-.5cm]{4cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
-  \caption{Sample figure caption.}
-  \label{fig:fig1}
-\end{figure}
-
-\subsection{Tables}
-\lipsum[12]
-See awesome Table~\ref{tab:table}.
-
-\begin{table}
- \caption{Sample table title}
-  \centering
-  \begin{tabular}{lll}
-    \toprule
-    \multicolumn{2}{c}{Part}                   \\
-    \cmidrule(r){1-2}
-    Name     & Description     & Size ($\mu$m) \\
-    \midrule
-    Dendrite & Input terminal  & $\sim$100     \\
-    Axon     & Output terminal & $\sim$10      \\
-    Soma     & Cell body       & up to $10^6$  \\
-    \bottomrule
-  \end{tabular}
-  \label{tab:table}
-\end{table}
-
-\subsection{Lists}
-\begin{itemize}
-\item Lorem ipsum dolor sit amet
-\item consectetur adipiscing elit. 
-\item Aliquam dignissim blandit est, in dictum tortor gravida eget. In ac rutrum magna.
-\end{itemize}
-
-
-\section{Conclusion}
-Your conclusion here
-
-\section*{Acknowledgments}
-This was was supported in part by......
 
 
 %Bibliography
