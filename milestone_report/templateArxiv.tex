@@ -98,7 +98,7 @@ diffusion-based text-to-image models across various metrics to assess their stre
 domain of text-to-image generation. This section provides an overview of key developments in diffusion-based text-to-image synthesis, 
 with a focus on three prominent models: Stable Diffusion, FLUX.1, and Kwai Kolors.
 
-Stable Diffusion, developed by Rombach et al. \cite{ulal2024stablediffusion}, introduced the concept of latent diffusion, allowing for efficient training 
+Stable Diffusion, developed by Rombach et al. \cite{kulal2024stablediffusion}, introduced the concept of latent diffusion, allowing for efficient training 
 and inference while maintaining high image quality. Stable diffusion focuses on improving and 
 scaling rectified  flow models for high-resolution text-to-image synthesis. A rectified flow formulation, which connects 
 data and noise in a straight 
@@ -132,24 +132,23 @@ Kolors achieves faster training and inference times compared to pixel-space diff
 to various levels of noise.
 
 The below table captures some of the characteristics of these models:
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|l|l|}
-\hline
-\textbf{Model} & \textbf{Stable Diffusion} & \textbf{FLUX.1} & \textbf{Kwai-Kolors} \\ \hline
-\textbf{Architecture} & Latent diffusion model & Rectified flow Transformer & Latent diffusion model \\ \hline
-\textbf{Parameter Size} & 860 million (SD 1.5) & 12 billion & 2.6 billion \\ \hline
-\textbf{Open Source} & Yes & Partially (dev version) & Yes \\ \hline
-\textbf{Speed} & Fast, especially with optimizations & Varies (schnell version optimized for speed) & Not specified \\ \hline
-\textbf{Image Quality} & High & Very high, especially with dev/pro versions & High \\ \hline
-\textbf{Prompt Understanding} & Keyword-based & Advanced NLP & Advanced NLP \\ \hline
-\textbf{Multilingual Support} & Limited & Not specified & Yes (Chinese and English) \\ \hline
-\textbf{Hardware Requirements} & Can run on consumer GPUs (8GB+ VRAM) & High (24GB+ VRAM recommended) & Not specified \\ \hline
-\textbf{Unique Features} & Inpainting, outpainting, image-to-image & Excellent prompt adherence, detailed outputs & High-quality photorealistic synthesis, noise robust \\ \hline
-\end{tabular}
-\caption{Comparison of Stable Diffusion, FLUX.1, and Kwai-Kolors}
-\end{table}
 
+\begin{table}
+  \caption{Comparison of Stable Diffusion, FLUX.1, and Kwai-Kolors}
+  \centering
+  \begin{tabular}{|l|p{3in}|}
+    \toprule
+    \textbf{Model} & \textbf{Stable Diffusion} & \textbf{FLUX.1} & \textbf{Kwai-Kolors} \\
+    \midrule
+    \textbf{Architecture} & Latent diffusion model & Rectified flow Transformer & Latent diffusion model \\
+    \textbf{Parameter Size} & 860 million (SD 1.5) & 12 billion & 2.6 billion \\
+    \textbf{Image Quality} & High & Very high, especially with dev/pro versions & High \\
+    \textbf{Prompt Understanding} & Keyword-based & Advanced NLP & Advanced NLP \\
+    \textbf{Unique Features} & Inpainting, outpainting, image-to-image & Excellent prompt adherence, detailed outputs & High-quality photorealistic synthesis, noise robust \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:comparison}
+\end{table}
 
 \section{Evaluation Metrics}
 The evaluation of diffusion models for image generation is an active area of research with different metrics to assess the various
@@ -258,6 +257,9 @@ Weekly meetings will be held to track progress and address challenges.
 
 \section{Execution Plan}
 
+%Bibliography
+\bibliographystyle{unsrt}  
+\bibliography{references}
 
 \section{Headings: first level}
 \label{sec:headings}
@@ -346,6 +348,22 @@ Your conclusion here
 
 \section*{Acknowledgments}
 This was was supported in part by......
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|p{3in}|}
+  \hline
+  \textbf{Model} & \textbf{Stable Diffusion} & \textbf{FLUX.1} & \textbf{Kwai-Kolors} \\ \hline
+  \textbf{Architecture} & Latent diffusion model & Rectified flow Transformer & Latent diffusion model \\ \hline
+  \textbf{Parameter Size} & 860 million (SD 1.5) & 12 billion & 2.6 billion \\ \hline
+  \textbf{Image Quality} & High & Very high, especially with dev/pro versions & High \\ \hline
+  \textbf{Prompt Understanding} & Keyword-based & Advanced NLP & Advanced NLP \\ \hline
+  \textbf{Unique Features} & Inpainting, outpainting, image-to-image & Excellent prompt adherence, detailed outputs & High-quality photorealistic synthesis, noise robust \\ \hline
+  \textbf{Unique Features} & \RaggedRight{Inpainting, outpainting, image-to-image & Excellent prompt adherence, detailed outputs & High-quality photorealistic synthesis, noise robust} \\ \hline
+  \end{tabular}
+  \caption{Comparison of Stable Diffusion, FLUX.1, and Kwai-Kolors}
+  \end{table}
+
 
 %Bibliography
 \bibliographystyle{unsrt}  
