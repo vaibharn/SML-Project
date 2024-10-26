@@ -55,6 +55,7 @@
 \begin{document}
 \maketitle
 
+
 \section{Introduction}
 The project aims at implementing and comparing different diffusion models that are used for 
 image generation. We will evaluate the performance of these different models in generating
@@ -92,26 +93,19 @@ of image generation. This will help researchers and practitioners in the field t
 
 
 \section{Related Work}
-Recent advancements in diffusion models have focused on improving various aspects such as efficiency, scale, 
-architecture, training techniques, and controllability. This comparative study aims to evaluate several state-of-the-art 
+Recent advancements in diffusion models have focused on improving various aspects such as 
+architecture, scale, efficiency, training techniques, and controllability. This comparative study aims to evaluate state-of-the-art 
 diffusion-based text-to-image models across various metrics to assess their strengths, limitations, and potential synergies in the 
-domain of text-to-image generation. This section provides an overview of key developments in diffusion-based text-to-image synthesis, 
-with a focus on three prominent models: Stable Diffusion, FLUX.1, and Kwai Kolors.
+domain of text-to-image generation. This section provides an overview of key developments in diffusion-based text-to-image generation, 
+with a focus on three prominent models; Stable Diffusion, FLUX.1, and Kwai-Kolors.
 
-Stable Diffusion, developed by Rombach et al. \cite{kulal2024stablediffusion}, introduced the concept of latent diffusion, allowing for efficient training 
-and inference while maintaining high image quality. Stable diffusion focuses on improving and 
-scaling rectified  flow models for high-resolution text-to-image synthesis. A rectified flow formulation, which connects 
-data and noise in a straight 
-line, rather than traditional curved diffusion paths is used. A set of new noise samplers (Logit-Normal sampling, Mode sampling 
+Stable Diffusion, developed by Rombach et al. \cite{kulal2024stablediffusion}, introduced the concept of latent diffusion, that allows efficient training 
+and inference while maintaining high image quality. Rather than the traditional curved diffusion paths, a rectified flow formulation, which connects data and noise in straight line is used. A set of new noise samplers (Logit-Normal sampling, Mode sampling 
 with heavy tails, CosMap sampling) that improve performance over previous samplers were introduced for rectified flow models. 
 A novel transformer-based architecture called MM-DiT (Multimodal Diffusion Transformer) specifically designed for text-to-image 
-tasks was used in stable diffusion. It uses separate weights for text and image modalities. Larger models can be sampled using fewer 
-steps. For example, their depth=38 model shows only a 2.71\% relative CLIP score decrease when using 5 sampling steps instead of 50, 
-compared to 4.30\% for the depth=15 model. They demonstrate a strong correlation between validation loss and comprehensive 
-evaluation metrics like GenEval, T2I-CompBench, and human preference ratings.
+tasks was used in stable diffusion. This architecture uses separate weights for text and image modalities.
 
-FLUX.1, a more recent development by Black Forest labs, aims to improve upon Stable Diffusion's capabilities by incorporating 
-advanced techniques such as rectified flow and parallel attention layers \cite{flux2024medium}. FLUX claims to offer enhanced speed, efficiency, 
+FLUX.1, a recent development by Black Forest labs, tries to improve upon Stable Diffusion's capabilities by incorporating techniques such as rectified flow and parallel attention layers \cite{flux2024medium}. FLUX claims to offer enhanced speed, efficiency, 
 and prompt adherence compared to earlier diffusion models. All public FLUX.1 models are based on a hybrid architecture of multimodal 
 and parallel diffusion transformer blocks and scaled to 12B parameters. The model claims to improve over previous state-of-the-art diffusion 
 models by building on flow matching, a general and conceptually simple method for training generative models, which includes 
@@ -119,17 +113,14 @@ diffusion as a special case \cite{flux2024main}. In addition, the model claims t
 incorporating rotary positional embeddings and parallel attention layers.
 
 Kwai-Kolors is a large-scale text-to-image generation model based on latent diffusion, developed by the Kuaishou Kolors team. 
-Similar to other latent diffusion models, Kolors operates in a compressed latent space rather than pixel space, 
+Kolors operates in a compressed latent space rather than pixel space, 
 which offers advantages in computational efficiency and generation quality \cite{kolors2024}. The model was trained on billions of text-image 
 pairs and demonstrates significant capabilities in visual quality, complex semantic accuracy, and text rendering for both 
-Chinese and English characters. The Kolors model is based on a latent diffusion architecture, which operates in a compressed 
-latent space rather than pixel space. This approach offers several advantages such as reduced computational complexity, improved 
+Chinese and English characters. The latent diffusion approach offers several advantages such as reduced computational complexity, improved 
 generation quality, and enhanced robustness to noise. the model architecture consists of three main components: a variational encoder 
-(VAE) for encoding and ddecoding images, a U-Net back bone for the diffusion process, and a noise-aware classifier-free guidance 
-mechanism which allows for better control over the generation process and improved quality of generated images. Kolors employs an 
-adaptive noise schedule that adjusts the noise level based on the input image quality. By operating in a compressed latent space, 
-Kolors achieves faster training and inference times compared to pixel-space diffusion models. This feature enhances the model's robustness 
-to various levels of noise.
+(VAE) for encoding and decoding images, a U-Net back bone for the diffusion process, and a noise-aware classifier-free guidance 
+mechanism. Kolors employs an 
+adaptive noise schedule that adjusts the noise level based on the input image quality.
 
 Table 1 captures some of the characteristics of these models.
 
@@ -137,17 +128,18 @@ Table 1 captures some of the characteristics of these models.
   \centering
   \begin{tabular}{p{1.5in} p{1.5in} p{1.5in} p{1.5in}}
     \toprule
-    \textbf{Model} & \textbf{Stable Diffusion} & \textbf{FLUX.1} & \textbf{Kwai-Kolors} \\
+    \textbf{Model} & \textbf{Stable Diffusion} & \textbf{FLUX.1} & \textbf{Kolors} \\
     \midrule
     \textbf{Architecture} & Latent diffusion model & Rectified flow Transformer & Latent diffusion model \\
     \textbf{Parameter Size} & 860 million (SD 1.5) & 12 billion & 2.6 billion \\
-    \textbf{Image Quality} & High & Very high, especially with dev/pro versions & High \\
+    \textbf{Image Quality} & High & Very highs & High \\
     \textbf{Prompt Understanding} & Keyword-based & Advanced NLP & Advanced NLP \\
-    \textbf{Unique Features} & Inpainting, outpainting, image-to-image & Excellent prompt adherence, detailed outputs & High-quality photorealistic synthesis, noise robust \\
+    \textbf{Unique Features} &
+    Inpainting, outpainting, image-to-image translation & Excellent prompt adherence, detailed outputs & High-quality photorealistic synthesis, noise robust \\
     \bottomrule
   \end{tabular}
   \label{tab:comparison}
-  \caption{Comparison of Stable Diffusion, FLUX.1, and Kwai-Kolors}
+  \caption{Comparison of Stable Diffusion, FLUX.1, and Kolors}
 \end{table}
 
 \section{Evaluation Metrics}
@@ -286,6 +278,7 @@ Here, we will write a detailed report on highlighting results, and conclusions a
 
 Weekly meetings will be held to track progress and address challenges.
 
+\pagebreak
 
 %Bibliography
 \bibliographystyle{unsrt}  
