@@ -55,6 +55,9 @@
 \begin{document}
 \maketitle
 
+\begin{abstract}
+    \textbf{Abstract goes here.}
+\end{abstract}
 
 \section{Introduction}
 The project aims at implementing and comparing different diffusion models that are used for 
@@ -213,70 +216,131 @@ When these metrics are used in combination to evaluate our diffusion models, we 
 to text prompts of the images generated.
 
 
-\section{Progress}
-For the Milestone 1 Report, we are about one week behind schedule as mentioned the timeline we estimated in the Project proposal because of more extensive literature review than expected. We have included the updated Execution Plan accordingly such that we are able to finish the project in stipulated time. The following subsections describe the tasks we have completed for the first milestone.
+% \section{Progress}
+% For the Milestone 1 Report, we are about one week behind schedule as mentioned the timeline we estimated in the Project proposal because of more extensive literature review than expected. We have included the updated Execution Plan accordingly such that we are able to finish the project in stipulated time. The following subsections describe the tasks we have completed for the first milestone.
 
-\subsection{Survey of State of the Art Diffusion Models}
-We performed a comprehensive search and survey of the current open-source models available on the internet, more specifically on websites like HuggingFace.co, Github, civit.ai to identify the models we are going to perform this comparative study on. We selected FLUX.1[dev] by Black Forest Lab, Stable Diffusion 3 Medium by StabilityAI, and Kolors by Kuaishou Kolors team.
+% \subsection{Survey of State of the Art Diffusion Models}
+% We performed a comprehensive search and survey of the current open-source models available on the internet, more specifically on websites like HuggingFace.co, Github, civit.ai to identify the models we are going to perform this comparative study on. We selected FLUX.1[dev] by Black Forest Lab, Stable Diffusion 3 Medium by StabilityAI, and Kolors by Kuaishou Kolors team.
 
-\subsection{Identification of Evaluation Metrics}
-As mentioned in section 4, we identified Inception Score, Fréchet Inception Distance, CLIP Score, CLIP-MMD, and TIFA to be the most relevant and effective our comparative study.
+% \subsection{Identification of Evaluation Metrics}
+% As mentioned in section 4, we identified Inception Score, Fréchet Inception Distance, CLIP Score, CLIP-MMD, and TIFA to be the most relevant and effective our comparative study.
 
-\subsection{Environment Setup for the Diffusion Models}
-We have created and activated virtual environments for each of the three models with all the required packages and libraries including PyTorch, Hugging Face Diffusers, CUDA. The model weights are ready to use for the evaluation step.
-
-
-
-
-\section{Execution Plan}
-This following timeline is the updated version taking into consideration the work done till first milestone.
-
-\textbf{Prompt Engineering (Week 6).}
-We will be creating sample text prompts for image generation in different categories such as people, multiple objects, landscapes, portraits.
-
-\textbf{Collection of Evaluation Metrics Data (Weeks 7 and 8).}
-In this phase, we will use identical prompts to generate images from all models and
-analyze them to evaluate the generated image output. We will implement and collect metrics for quantitative evaluation as discussed before.
-
-\textbf{Comparative Analysis (Week 9).}
-During this part of project, we will use different metrics and compare models on them along with assessing their performance by testing various batch sizes and image resolutions.
-
-\textbf{Results Compilation and Conclusions (Week 10).}
-Now we will start writing reports by collecting and analyzing the results data and perform
-statistical analysis to highlight significant differences between models. We will also use
-graphs and charts to further elaborate our results.
-
-\textbf{Report Writing and Presentation (Weeks 11 and 12).}
-Here, we will write a detailed report on highlighting results, and conclusions and simultaneously develop a presentation, we will also include a gallery of generated images for comparison. In the last week, an internal peer review will be conducted to finalize the report and presentation based on everyone’s feedback.
+% \subsection{Environment Setup for the Diffusion Models}
+% We have created and activated virtual environments for each of the three models with all the required packages and libraries including PyTorch, Hugging Face Diffusers, CUDA. The model weights are ready to use for the evaluation step.
 
 
 
-\section{Workload Distribution}
 
-\subsection{Model Setup and Implementation (Vaibhav Sharan, Ansh Sharma)}
+% \section{Execution Plan}
+% This following timeline is the updated version taking into consideration the work done till first milestone.
+
+% \textbf{Prompt Engineering (Week 6).}
+% We will be creating sample text prompts for image generation in different categories such as people, multiple objects, landscapes, portraits.
+
+% \textbf{Collection of Evaluation Metrics Data (Weeks 7 and 8).}
+% In this phase, we will use identical prompts to generate images from all models and
+% analyze them to evaluate the generated image output. We will implement and collect metrics for quantitative evaluation as discussed before.
+
+% \textbf{Comparative Analysis (Week 9).}
+% During this part of project, we will use different metrics and compare models on them along with assessing their performance by testing various batch sizes and image resolutions.
+
+% \textbf{Results Compilation and Conclusions (Week 10).}
+% Now we will start writing reports by collecting and analyzing the results data and perform
+% statistical analysis to highlight significant differences between models. We will also use
+% graphs and charts to further elaborate our results.
+
+% \textbf{Report Writing and Presentation (Weeks 11 and 12).}
+% Here, we will write a detailed report on highlighting results, and conclusions and simultaneously develop a presentation, we will also include a gallery of generated images for comparison. In the last week, an internal peer review will be conducted to finalize the report and presentation based on everyone’s feedback.
+
+\section{Methodology}
+\subsection{Model Setup}
+Vaibhav Setup and Models go here
+
+\subsection{Evaluation Metrics Methodology}
+We downloaded 100 image caption pairs from \texttt{Conceptual Captions}, a Google Research Dataset. 
+The captions provided along with the images were not descriptive enough to generate images 
+using the diffusion models. An advanced vision model Microsoft \texttt{florence-2} integration was used on Hugging Face 
+to generate more descriptive captions for the downloaded images. These prompts were used for text to image generation 
+in the three selected models. This section describes the methodology used to evaluate the selected diffusion models. 
+
+\subsubsection{Inception Score}
+The Inception Score (IS) evaluates the quality and diversity of generated images. A pre-trained Inception V3 model was used with 
+\texttt{InceptionScore} from torchmetrics. The images were resized to 299 x 299 for compatability and then converted to tensors. The Inception Score
+and Standard Deviation was then calculated for the set of generated images of each diffusion model. The mean IS and SD were used for our comparison and analysis.
+
+\subsubsection{CLIP score}
+The CLIP score measures how well the generated images align with their textual prompts. The generated images were 
+preprocessed into tensors and all the captions of the generated images were stored in a text file. These were the inputs to \texttt{CLIPScore} from 
+torchmetrics, a pre-trained CLIP model(openai/clip-vit-base-patch16) which was 
+used to compute the similarity scores between them. The CLIP score of a model was taken as the mean of CLIP scores 
+of the 100 generated images of the model. 
+
+\subsubsection{Fréchet Inception Distance}
+FID calculates the similarity between the distributions of real and generated images 
+in feature space. It captures both the quality and realism of generated images. The real and their corresponding generated images 
+were given as inputs to the \texttt{FrechetInceptionDistance} function from torchmetrics.
+
+\subsubsection{TIFA}
+TIFA measures how faithfully the generated images represent their textual prompts 
+by leveraging a Visual Question Answering(VQA) model. The TIFA methodology used here is similar to the one mentioned in \cite{Yushi2023}. Question answer pairs generated for each 
+textual prompt using GPT-3. Since these questions were generic and not specific to the textual description, 
+the set of questions and answers were created manually for the 100 images. 5 question answer pairs which asked about 
+the subject, color in the image, presence of people, weather, etc were created for each textual prompt. A BLIP VQA model 
+(Salesforce/blip-vqa-base) was used to the answer the questions given the generated image. A pre-trained BERT model from Hugging Face 
+was used to compute the similarity between expected answers and the answers 
+given by the VQA model. If the similarity score was above 0.7, it was deemed to be the right answer. 
+The total number of correct answers and the total number of questions were recorded and used to calculate the 
+TIFA score.
+
+\section{Results and Analysis}
+Result and Analysis goes here
+
+% \section{Workload Distribution}
+
+% \subsection{Model Setup and Implementation (Vaibhav Sharan, Ansh Sharma)}
+% \begin{itemize}
+%     \item Set up local environments for Stable Diffusion, FLUX.1, and Kwai-Kolors
+%     \item Implement image generation scripts for each model
+% \end{itemize}
+
+% \subsection{Quantitative Metrics Implementation (Krishnaprasad Palamattam Aji)}
+% \begin{itemize}
+%     \item Developed scripts for IS, FID, CLIP Score and TIFA calculation for all 3 models
+% \end{itemize}
+
+% \subsection{Data Collection and Processing (Unnikrishnan Madhavan)}
+% \begin{itemize}
+%     \item Create diverse text prompts dataset
+%     \item Develop scripts for TIFA metrics
+% \end{itemize}
+
+% \subsection{Analysis and Report Writing (All Team Members)}
+% \begin{itemize}
+%     \item Analyze results and compare model performances
+%     \item Write findings and prepare visualizations
+% \end{itemize}
+\section{Team Member Contribution}
+\textbf{Vaibhav Sharan}
 \begin{itemize}
-    \item Set up local environments for Stable Diffusion, FLUX.1, and Kwai-Kolors
-    \item Implement image generation scripts for each model
+    \item 
+\end{itemize}
+\textbf{Krishnaprasad Palamattam Aji}
+\begin{itemize}
+    \item Prepared descriptive textual inputs for image generation in all 3 models
+    \item Script generation for calculating IS, FID, CLIP Score and TIFA score of all the models
+\end{itemize}
+\textbf{Unnikrishnan Madhavan}
+\begin{itemize}
+    \item 
+\end{itemize}
+\textbf{Ansh Sharma}
+\begin{itemize}
+    \item 
 \end{itemize}
 
-\subsection{Quantitative Metrics Implementation (Krishnaprasad Palamattam Aji)}
-\begin{itemize}
-    \item Develop scripts for IS, FID, CLIP Score and CMMD
-\end{itemize}
+\section{Conclusion}
+Conclusion and any future work goes here
 
-\subsection{Data Collection and Processing (Unnikrishnan Madhavan)}
-\begin{itemize}
-    \item Create diverse text prompts dataset
-    \item Develop scripts for TIFA metrics
-\end{itemize}
-
-\subsection{Analysis and Report Writing (All Team Members)}
-\begin{itemize}
-    \item Analyze results and compare model performances
-    \item Write findings and prepare visualizations
-\end{itemize}
-
-Weekly meetings will be held to track progress and address challenges.
 
 \pagebreak
 
