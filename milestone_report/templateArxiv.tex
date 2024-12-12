@@ -15,6 +15,7 @@
 \usepackage{fancyhdr}       % header
 \usepackage{graphicx}       % graphics
 \usepackage{amsmath}
+\usepackage{float}
 \graphicspath{{media/}}     % organize your images and other figures under media/ folder
 
 %Header
@@ -56,7 +57,7 @@
 \maketitle
 
 \begin{abstract}
-    \textbf{This report presents a comparative analysis of diffusion models utilized for text-to-image generation. Using metrics like Inception Score (IS), Fréchet Inception Distance (FID), Contrastive Language-Image Pre-training (CLIP) Score, CLIP Maximum Mean Discrepancy (CMMD), and Text-to-Image Faithfulness Evaluation (TIFA), the study analyzes well-known models like Stable Diffusion, FLUX.1, and Kwai-Kolors. The process consists of creating text prompts from a dataset, utilizing the models to create images, and evaluating the results using these metrics. The results help to clarify the capabilities of each model and help researchers choose the best model for a given application by highlighting its advantages, disadvantages, and suitability for a range of situations.}
+    This report presents a comparative analysis of diffusion models utilized for text-to-image generation. Using metrics like Inception Score (IS), Fréchet Inception Distance (FID), Contrastive Language-Image Pre-training (CLIP) Score, CLIP Maximum Mean Discrepancy (CMMD), and Text-to-Image Faithfulness Evaluation (TIFA), the study analyzes well-known models like Stable Diffusion, FLUX.1, and Kwai-Kolors. The process consists of creating text prompts from a dataset, utilizing the models to create images, and evaluating the results using these metrics. The results help to clarify the capabilities of each model and help researchers choose the best model for a given application by highlighting its advantages, disadvantages, and suitability for a range of situations.
     
     \textbf{Keywords: Diffusion Models, Text-to-Image Generation, Stable Diffusion, FLUX.1, Kwai-Kolors, Image Quality, Inception Score (IS), Fréchet Inception Distance (FID), CLIP Score, Text-to-Image Faithfulness (TIFA), Artificial Intelligence, Image Synthesis, Generative Models.}
 \end{abstract}
@@ -255,8 +256,45 @@ to text prompts of the images generated.
 % Here, we will write a detailed report on highlighting results, and conclusions and simultaneously develop a presentation, we will also include a gallery of generated images for comparison. In the last week, an internal peer review will be conducted to finalize the report and presentation based on everyone’s feedback.
 
 \section{Methodology}
-\subsection{Model Setup}
-Vaibhav Setup and Models go here
+
+\subsection{Implementation Challenges}
+
+We performed a comprehensive search and survey of the current open-source models available on the internet, more specifically on websites like HuggingFace.co \cite{hugging}, GitHub, civit.ai \cite{civit} to identify the models we are going to perform this comparative study on. Till the time we were working on our milestone one report we had selected FLUX.1-dev by Black Forest Lab, Stable Diffusion 3 Medium by StabilityAI, and Kolors by Kuaishou Kolors team. While implementing the image generation and processing pipeline described in the next section, we faced various challenges, the major one being frequent crashes because of low memory on the inference machine. 
+
+The biggest challenge we faced was finding a suitable machine for our task. Diffusion models consists of billions of parameters, spread across multiple layers which even after the model has been trained, is needed to be loaded into the memory for inference of images from the text-prompts. For example, the model size for FLUX.1-dev is ~30GB. Other than the diffusion model, we need text-encoders and text-decoder models to process the prompts, variational autoencoders for helping in the image generation process. These are also loaded in the memory, and can take upto several GBs of memory based on the exact models used. We explored multiple cloud options, including ASU Sol supercomputer, but they had limitations on what we could run on them. Running a image generation pipeline of diffusion models is a heavy task and was not allowed. In the end, we decided to use a personal laptop with decent hardware and a dedicated GPU for our project.
+
+The other major challenge we faced was the availability of open source weights for Kolors diffusion model. On doing further research we found out that different versions of Stable Diffusions performed differently. Therefore we chose Stable Diffusion 3.5 as our new bench mark instead of Kolors.
+
+To overcome this challenge, we searched about techniques which allows for diffusion models to fit in our machine with 6GB VRAM and 16GB RAM. The method we used is called Quantization \cite{li2023qdiffusionquantizingdiffusionmodels}. Quantization is a method used to decrease the computational and memory expenses associated with running inference by using low-precision data types, such as 8-bit integers (int8), instead of the standard 32-bit floating-point (float32) representation for weights and activations.
+
+By lowering the bit count, the model requires less memory storage and theoretically consumes less energy. Additionally, operations like matrix multiplication can be executed more quickly using integer arithmetic. This technique also enables models to run on devices with low memory like our consumer grade laptop.
+
+Quantization is a relatively new technique in the realm of diffusion models, and there are currently few publicly available quantized versions. In our research, we tested 16-bit, 8-bit, 5-bit, and 4-bit quantized models of FLUX.1-dev \cite{flux}, Stable Diffusion 3 Medium \cite{sd3}, and Stable Diffusion 3.5 Medium \cite{sd3.5}. We deviated from our initial plan of using Kolors model, and instead went with comparison of two versions of Stable Diffusion family of models, SD3 Medium and SD3.5 Medium.
+
+
+We found that the 16-bit models for SD3 and SD3.5 could fit within our machine's memory limits, which can be calculated by multiplying the number of parameters by 16-bits, ~4GB for SD3 and ~5GB for SD3. However, FLUX.1-dev, which has 12 billion parameters, was too large to fit even in its 5-bit variant.
+We were able to run the 4-bit quantized model of FLUX.1-dev, but the images produced had significant quality issues, including distorted colors, noisy artifacts, and overall low quality. These results underscore the challenges associated with using aggressive quantization in diffusion models.
+
+\subsection{Image Generation Pipeline}
+To streamline the whole image generation process, we used ComfyUI \cite{comfyui} framework. The first step was acquiring the model weights for the diffusion models from HuggingFace. These weights were of GGUF format, to integrate them with our ComfyUI workflow, we used a custom node called ComfyUI-GGUF \cite{gguf}. As quantized models do not inherently include built-in CLIP \cite{clip} models, it is necessary to download the appropriate CLIP models from the Stable Diffusion Text Encoders and store them in the CLIP directory of the ComfyUI folder.
+
+The pipeline employs a CLIP text encoder to convert text prompts into embeddings that inform the image generation process. This task is facilitated by the \texttt{CLIPTextEncode} node within ComfyUI. We also used \texttt{t5xxl\_fp16.safetensors} \cite{t5} from Google for text encoding of the prompts.
+
+The Variational Autoencoder (VAE) \cite{enwiki:1261565566} is integral to encoding images into latent space and subsequently decoding them back into pixel space. In ComfyUI, researchers can utilize the \texttt{VAE Encode} node to transform images into latent representations and the \texttt{VAE Decode} node to reconstruct images from these latent codes.
+
+The workflow within ComfyUI was structured to connect nodes responsible for loading the U-Net model, CLIP model, and VAE model effectively. The process consisted of utilizing an \texttt{EmptySD3LatentImage} node to initialize a latent image for as our starting noisy image. We employed the \texttt{KSampler} node to manage parameters like denoising, iterations, seeds, sampler for the diffusion process. We kept the iterations fixed to 30 steps and used the same parameters for all the models to ensure the comparative study is accurate.
+Finally, we connected a \texttt{Save Image} node at the end of the pipeline to store the generated images in a PNG format.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{ComfyUI-workflow}
+	\caption{Representation of the ComfyUI workflow for SD3.5 image generation pipeline. The connections between the different nodes are marked by colored lines. The inference parameter details are shown in the KSampler node.}
+	\label{fig:comfyui-workflow}
+\end{figure}
+
+Another custom node \texttt{Inspire Pack} \cite{inspirepack} was utilized in this project to make one-click generation of images from a text file containing multiple prompts possible. This custom node reads all the prompts in a zipped fashion from the text file and then unzips them and feeds them into the \texttt{Positive Prompt} and \texttt{Negative Prompt} nodes. 
+
+This pipeline was used to generate a set of 100 images for each model from the generated text prompts as discussed in the next section. The average inference time of each image for FLUX.1-dev, SD3, SD3.5 was 12 minutes, 4 minutes, and 6 minutes respectively.
 
 \subsection{Evaluation Metrics Methodology}
 We downloaded 100 image caption pairs from \texttt{Conceptual Captions}, a Google Research Dataset. 
@@ -294,8 +332,54 @@ given by the VQA model. If the similarity score was above 0.7, it was deemed to 
 The total number of correct answers and the total number of questions were recorded and used to calculate the 
 TIFA score.
 
+\subsection{CLIP MMD}
+CLIP MMD is an integration of MMD techniques into CLIP framework and helps in quantifying text-to-image generative model performance. FID assumes normality of distributions which is often violated. Whereas MMD does not rely on such assumptions. Also, MMD is less dependent on sample size compared to FID. These characteristics makes MMD more reliable and consistent across different evaluation settings. Studies also show that CLIP MMD aligns better with human judgments than FID, particularly in cases involving progressive distortions or subtle improvements in image quality. To measure the CLIP MMD score for the chosen models, same image pairs used for TIFA evaluation was used as CLIP MMD measures the distance between real and generated images. A python script with Embeddings from the \verb|clip_mmd| libraries were used to calculate the score for each model.   
+
 \section{Results and Analysis}
-Result and Analysis goes here
+Table 2 captures the results from metrics evaluation. 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{p{2in} p{0.5in} p{0.5in} p{0.5in} p{0.5in} p{0.8in}}
+		\toprule
+		\textbf{Model} & \textbf{IS} & \textbf{CLIP} & \textbf{FID} & \textbf{TIFA} & \textbf{CLIP MMD}\\
+		\midrule
+		Stable Diffusion 3 Medium & 6.413 & 18.847 & 180.193 & 0.838 & 0.548\\
+		Stable Diffusion 3.5 Medium & 6.127 & 18.744 & 183.266 & 0.824 & 0.497\\
+		FLUX.1-dev & 6.247 & 18.805 & 181.133 & 0.917 & 0.438\\
+		\bottomrule
+		\\
+	\end{tabular}
+	\label{tab:metrics}
+	\caption{Evaluated comparison metrics}
+\end{table}
+
+From this data it can be inferred that for the used setup, Stable Diffusion 3 Medium shows high IS, CLIP and FID scores. Whereas FLUX.1-dev has better numbers in terms of TIFA and CLIP MMD scores among the models compared. FLUX.1-dev demonstrates excellent semantic alignment and fidelity to text prompts. The lowest CLIP MMD shows strong multi modal alignment FLUX.1-dev model holds. Stable Diffusion 3 Medium has slightly better FID than FLUX.1-dev, suggesting marginally more realistic image quality in terms of distribution similarity to real data. Stable Diffusion 3.5 Medium performs slightly worse across most metrics compared to its predecessor (Stable Diffusion 3 Medium). From this data we can conclude that Stable Diffusion 3 Medium and  FLUX.1-dev are suitable for applications such as creative content generation, diverse dataset generation for training machine learning models. Also, the high TIFA score of FLUX.1-dev makes it ideal candidate for scientific or educational illustrations where text fidelity is crucial. These scores can vary depending on the flow setup and other implementation intricacies. The table just demonstrates an overall picture from our comparative study.\par Images generated for the text prompt: "The image is a collage of three photos showing how to make 10 minute DIY leather pulls. The first photo on the top left shows a close-up of a black cabinet door with two leather handles attached to it. The handles are brown and appear to be made of leather. The second photo in the top right shows the same leather handles hanging on the door. The third photo shows a black wardrobe with a coat rack and a potted plant on the floor. The text on the image reads "10 Minute DIY Leather Pulls"." are captured in figures ~\ref{sd3},~\ref{sd3.5}, and ~\ref{flux}. The images illustrates the difference in images generated using the models compared to an good extent. We can see that the image generated using FLUX.1-dev (Fig~\ref{flux}) is realistic and it was able to embed the text accurately in the image.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{sd3leather.png}
+		\caption{SD3 Medium}
+		\label{sd3}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{sd3.5leather.png}
+		\caption{SD3.5 Medium}
+		\label{sd3.5}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{fluxleather.png}
+		\caption{FLUX.1-dev}
+		\label{flux}
+	\end{minipage}
+\end{figure}
+
+
 
 % \section{Workload Distribution}
 
@@ -324,7 +408,9 @@ Result and Analysis goes here
 \section{Team Member Contribution}
 \textbf{Vaibhav Sharan}
 \begin{itemize}
-    \item 
+    \item Performed the model selection process
+    \item Implemented the image generation pipeline
+    \item Generated images from the text prompts for all the diffusion models 
 \end{itemize}
 \textbf{Krishnaprasad Palamattam Aji}
 \begin{itemize}
@@ -333,7 +419,8 @@ Result and Analysis goes here
 \end{itemize}
 \textbf{Unnikrishnan Madhavan}
 \begin{itemize}
-    \item 
+	\item Setup the script and environment for CLIP MMD Calculation
+	\item Analyzed the results and performed a thorough study to understand the different use cases of each models and their trade offs
 \end{itemize}
 \textbf{Ansh Sharma}
 \begin{itemize}
@@ -341,31 +428,36 @@ Result and Analysis goes here
     \item Assisted in preparing slides or visual representations of the data and findings for project presentations.
 \end{itemize}
 
+
 \section{Future Scope}
 This study opens up several avenues for future research:
 \begin{itemize}
     \item \textbf{Examining New Models:} Future studies can look at multimodal models and newer versions of Stable Diffusion (like SD 4.0) for more dynamic image production.
     \item \textbf{Domain-certain Fine-Tuning:} By optimizing models for specialized domains such as fashion design or medical imaging, results for certain industries can be improved.
     \item \textbf{Advanced Evaluation Criteria:} It might be feasible to better capture aspects of created images including texture, semantic accuracy, and originality by developing more intricate criteria.
-    \item \textbf{Model Optimization:} These models are made more useable for real-time applications by reducing computation costs through techniques like knowledge distillation and pruning.
+    \item \textbf{Model Optimization:} These models are made more usable for real-time applications by reducing computation costs through techniques like knowledge distillation and pruning.
     \item \textbf{Ethical and Bias Considerations:} Future studies should address model biases and fairness to guarantee ethical use in text-to-image generation.
 \end{itemize}
 
 \section{Challenges Faced}
 We ran into a number of issues during the research that hindered our ability to compare diffusion models in a consistent and seamless manner:
+
 \begin{itemize}
-    \item \textbf{Problems with Model Compatibility and Configuration:} The study first employed the FLUX.1, Colors, and Stable Diffusion models. Later additions of more recent versions, such as FLUX.1-dev, SD 3.5 Medium, and Stable Diffusion 3 Medium, made it more difficult to configure various model architectures and guarantee consistent input-output compatibility.
+    \item \textbf{Problems with Model Configuration:} The study first employed the FLUX.1-dev, Kolors, and SD3. Later, we switched to SD3.5 Medium instead of Kolors, which created more overhead in terms of model configuration and implementation and to guarantee consistent input-output compatibility.
+    
     \item \textbf{Performance Variability:} Direct comparisons were challenging due to the models’ performance variability in areas like image quality, text-to-image alignment, and variety.
+    
     \item \textbf{Data and Prompt Generation:} In order to improve the descriptiveness of the Conceptual Captions dataset, sophisticated models such as Microsoft Florence-2 were employed, which increased processing complexity and time.
+    
     \item \textbf{Computational Constraints:} The increased complexity of newer models led to longer inference times, and even with quantized versions, the inference time remained a bottleneck for generating large sets of images.
+    
     \item \textbf{Limitations of Open-Source Models:} The study was limited to open-source models, which, while accessible, lacked certain proprietary optimizations and features that could have improved performance and customization.
 \end{itemize}
 
 \section{Conclusion}
-Conclusion and any future work goes here
+In this study, we conducted a comprehensive comparison of diffusion models for text-to-image generation, focusing on their performance across multiple metrics, including IS, CLIP, FID, TIFA, and CLIP MMD. We implemented a image generation pipeline of the selected models. These pipelines were fed by text prompts generated by the methods discussed to create the set of images for our metrics calculations. The results revealed distinct strengths and weaknesses among the models, providing valuable insights into their suitability for various applications. All the three models generate images with decent diversity and quality. Notably, FLUX.1-dev demonstrated superior text-image alignment, fidelity, and text embedding capabilities, as evidenced by its TIFA and CLIP MMD scores. 
 
-
-\pagebreak
+\newpage
 
 %Bibliography
 \bibliographystyle{unsrt}  
