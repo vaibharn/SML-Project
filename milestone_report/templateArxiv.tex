@@ -57,18 +57,13 @@
 \maketitle
 
 \begin{abstract}
-    This report presents a comparative analysis of diffusion models utilized for text-to-image generation. Using metrics like Inception Score (IS), Fréchet Inception Distance (FID), Contrastive Language-Image Pre-training (CLIP) Score, CLIP Maximum Mean Discrepancy (CMMD), and Text-to-Image Faithfulness Evaluation (TIFA), the study analyzes well-known models like Stable Diffusion, FLUX.1, and Kwai-Kolors. The process consists of creating text prompts from a dataset, utilizing the models to create images, and evaluating the results using these metrics. The results help to clarify the capabilities of each model and help researchers choose the best model for a given application by highlighting its advantages, disadvantages, and suitability for a range of situations.
+    This study presents a comparative analysis of diffusion models in the context of text-to-image generation. This reports start with brief introduction of diffusion models, followed by a section on the literature and related work we reviewed. We then discuss about standard metrics used in quantifying diffusion model quality and performance. This section is followed by a detailed description of   the methodology followed in this work. Results and analysis derived are discussed. We then summarize this report with challenges we faced and scope for future work.
     
     \textbf{Keywords: Diffusion Models, Text-to-Image Generation, Stable Diffusion, FLUX.1, Kwai-Kolors, Image Quality, Inception Score (IS), Fréchet Inception Distance (FID), CLIP Score, Text-to-Image Faithfulness (TIFA), Artificial Intelligence, Image Synthesis, Generative Models.}
 \end{abstract}
 
 \section{Introduction}
-The project aims at implementing and comparing different diffusion models that are used for 
-image generation. We will evaluate the performance of these different models in generating
-such high-quality images from textual prompts. The well known models like FLUX, Stable
-Diffusion will be studied in detail and compared with each other on the basis of
-their strengths, weaknesses and applicability in different scenarios. This study aims to shed light
-on the effectiveness of text to image diffusion models.
+In recent years, diffusion models have emerged as a powerful approach for text-to-image generation, offering significant advancements in generating high-quality and semantically aligned images. Humans naturally visualize images when reading stories, enhancing comprehension and enjoyment. Developing an automated system to generate realistic images from textual descriptions is a complex challenge and represents a significant step toward achieving human-like artificial intelligence. With advancements in deep learning, the text-to-image task has emerged as a remarkable application in Generative AI. This study evaluates the performance of several state-of-the-art diffusion models, including Stable Diffusion 3 Medium, Stable Diffusion 3.5 Medium, and FLUX.1-dev, across key standard metrics such as IS, CLIP, FID, TIFA, and CLIP MMD. The process consists of creating text prompts from a dataset, utilizing the models to create images, and evaluating the results using these metrics. The results help to clarify the capabilities of each model and help researchers choose the best model for a given application by highlighting its advantages, disadvantages, and determine their effectiveness and suitability for various applications.
 
 
 \section{Background and Motivation}
@@ -405,29 +400,6 @@ From this data it can be inferred that for the used setup, Stable Diffusion 3 Me
 %     \item Analyze results and compare model performances
 %     \item Write findings and prepare visualizations
 % \end{itemize}
-\section{Team Member Contribution}
-\textbf{Vaibhav Sharan}
-\begin{itemize}
-    \item Performed the model selection process
-    \item Implemented the image generation pipeline
-    \item Generated images from the text prompts for all the diffusion models 
-\end{itemize}
-\textbf{Krishnaprasad Palamattam Aji}
-\begin{itemize}
-    \item Prepared descriptive textual inputs for image generation in all 3 models
-    \item Script generation for calculating IS, FID, CLIP Score and TIFA score of all the models
-\end{itemize}
-\textbf{Unnikrishnan Madhavan}
-\begin{itemize}
-	\item Setup the script and environment for CLIP MMD Calculation
-	\item Analyzed the results and performed a thorough study to understand the different use cases of each models and their trade offs
-\end{itemize}
-\textbf{Ansh Sharma}
-\begin{itemize}
-    \item Collaborated with team members to interpret the results of each metric and identify trends or patterns in model performance.    
-    \item Assisted in preparing slides or visual representations of the data and findings for project presentations.
-\end{itemize}
-
 
 \section{Future Scope}
 This study opens up several avenues for future research:
@@ -456,6 +428,29 @@ We ran into a number of issues during the research that hindered our ability to 
 
 \section{Conclusion}
 In this study, we conducted a comprehensive comparison of diffusion models for text-to-image generation, focusing on their performance across multiple metrics, including IS, CLIP, FID, TIFA, and CLIP MMD. We implemented a image generation pipeline of the selected models. These pipelines were fed by text prompts generated by the methods discussed to create the set of images for our metrics calculations. The results revealed distinct strengths and weaknesses among the models, providing valuable insights into their suitability for various applications. All the three models generate images with decent diversity and quality. Notably, FLUX.1-dev demonstrated superior text-image alignment, fidelity, and text embedding capabilities, as evidenced by its TIFA and CLIP MMD scores. 
+
+\section{Team Member Contribution}
+\textbf{Vaibhav Sharan}
+\begin{itemize}
+	\item Performed the model selection process
+	\item Implemented the image generation pipeline
+	\item Generated images from the text prompts for all the diffusion models 
+\end{itemize}
+\textbf{Krishnaprasad Palamattam Aji}
+\begin{itemize}
+	\item Prepared descriptive textual inputs for image generation in all 3 models
+	\item Script generation for calculating IS, FID, CLIP Score and TIFA score of all the models
+\end{itemize}
+\textbf{Unnikrishnan Madhavan}
+\begin{itemize}
+	\item Setup the script and environment for CLIP MMD Calculation
+	\item Analyzed the results and performed a thorough study to understand the different use cases of each models and their trade offs
+\end{itemize}
+\textbf{Ansh Sharma}
+\begin{itemize}
+	\item Collaborated with team members to interpret the results of each metric and identify trends or patterns in model performance.    
+	\item Assisted in preparing slides or visual representations of the data and findings for project presentations.
+\end{itemize}
 
 \newpage
 
