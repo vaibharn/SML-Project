@@ -31,7 +31,8 @@
 
   
 %% Title
-\title{Comparative Analysis of Diffusion Models for Image Generation
+\title{Comparative Analysis of Diffusion Models for Image Generation \\
+	\large Group Number 34
 %%%% Cite as
 %%%% Update your official citation here when published 
 %\thanks{\textit{\underline{Citation}}: 
@@ -277,7 +278,7 @@ The pipeline employs a CLIP text encoder to convert text prompts into embeddings
 
 The Variational Autoencoder (VAE) \cite{enwiki:1261565566} is integral to encoding images into latent space and subsequently decoding them back into pixel space. In ComfyUI, researchers can utilize the \texttt{VAE Encode} node to transform images into latent representations and the \texttt{VAE Decode} node to reconstruct images from these latent codes.
 
-The workflow within ComfyUI was structured to connect nodes responsible for loading the U-Net model, CLIP model, and VAE model effectively. The process consisted of utilizing an \texttt{EmptySD3LatentImage} node to initialize a latent image for as our starting noisy image. We employed the \texttt{KSampler} node to manage parameters like denoising, iterations, seeds, sampler for the diffusion process. We kept the iterations fixed to 30 steps and used the same parameters for all the models to ensure the comparative study is accurate.
+The workflow within ComfyUI as shown in figure ~\ref{fig:comfyui-workflow} was structured to connect nodes responsible for loading the U-Net model, CLIP model, and VAE model effectively. The process consisted of utilizing an \texttt{EmptySD3LatentImage} node to initialize a latent image for as our starting noisy image. We employed the \texttt{KSampler} node to manage parameters like denoising, iterations, seeds, sampler for the diffusion process. We kept the iterations fixed to 30 steps and used the same parameters for all the models to ensure the comparative study is accurate.
 Finally, we connected a \texttt{Save Image} node at the end of the pipeline to store the generated images in a PNG format.
 
 \begin{figure}
@@ -345,7 +346,7 @@ Table 2 captures the results from metrics evaluation.
 		\\
 	\end{tabular}
 	\label{tab:metrics}
-	\caption{Evaluated comparison metrics}
+	\caption{Metrics scores for models compared}
 \end{table}
 
 From this data it can be inferred that for the used setup, Stable Diffusion 3 Medium shows high IS, CLIP and FID scores. Whereas FLUX.1-dev has better numbers in terms of TIFA and CLIP MMD scores among the models compared. FLUX.1-dev demonstrates excellent semantic alignment and fidelity to text prompts. The lowest CLIP MMD shows strong multi modal alignment FLUX.1-dev model holds. Stable Diffusion 3 Medium has slightly better FID than FLUX.1-dev, suggesting marginally more realistic image quality in terms of distribution similarity to real data. Stable Diffusion 3.5 Medium performs slightly worse across most metrics compared to its predecessor (Stable Diffusion 3 Medium). From this data we can conclude that Stable Diffusion 3 Medium and  FLUX.1-dev are suitable for applications such as creative content generation, diverse dataset generation for training machine learning models. Also, the high TIFA score of FLUX.1-dev makes it ideal candidate for scientific or educational illustrations where text fidelity is crucial. These scores can vary depending on the flow setup and other implementation intricacies. The table just demonstrates an overall picture from our comparative study.\par Images generated for the text prompt: "The image is a collage of three photos showing how to make 10 minute DIY leather pulls. The first photo on the top left shows a close-up of a black cabinet door with two leather handles attached to it. The handles are brown and appear to be made of leather. The second photo in the top right shows the same leather handles hanging on the door. The third photo shows a black wardrobe with a coat rack and a potted plant on the floor. The text on the image reads "10 Minute DIY Leather Pulls"." are captured in figures ~\ref{sd3},~\ref{sd3.5}, and ~\ref{flux}. The images illustrates the difference in images generated using the models compared to an good extent. We can see that the image generated using FLUX.1-dev (Fig~\ref{flux}) is realistic and it was able to embed the text accurately in the image.
