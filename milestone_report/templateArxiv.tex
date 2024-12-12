@@ -57,6 +57,7 @@
 
 \begin{abstract}
     \textbf{This report presents a comparative analysis of diffusion models utilized for text-to-image generation. Using metrics like Inception Score (IS), Fréchet Inception Distance (FID), Contrastive Language-Image Pre-training (CLIP) Score, CLIP Maximum Mean Discrepancy (CMMD), and Text-to-Image Faithfulness Evaluation (TIFA), the study analyzes well-known models like Stable Diffusion, FLUX.1, and Kwai-Kolors. The process consists of creating text prompts from a dataset, utilizing the models to create images, and evaluating the results using these metrics. The results help to clarify the capabilities of each model and help researchers choose the best model for a given application by highlighting its advantages, disadvantages, and suitability for a range of situations.}
+    
     \textbf{Keywords: Diffusion Models, Text-to-Image Generation, Stable Diffusion, FLUX.1, Kwai-Kolors, Image Quality, Inception Score (IS), Fréchet Inception Distance (FID), CLIP Score, Text-to-Image Faithfulness (TIFA), Artificial Intelligence, Image Synthesis, Generative Models.}
 \end{abstract}
 
@@ -336,7 +337,28 @@ Result and Analysis goes here
 \end{itemize}
 \textbf{Ansh Sharma}
 \begin{itemize}
-    \item 
+    \item Collaborated with team members to interpret the results of each metric and identify trends or patterns in model performance.    
+    \item Assisted in preparing slides or visual representations of the data and findings for project presentations.
+\end{itemize}
+
+\section{Future Scope}
+This study opens up several avenues for future research:
+\begin{itemize}
+    \item \textbf{Examining New Models:} Future studies can look at multimodal models and newer versions of Stable Diffusion (like SD 4.0) for more dynamic image production.
+    \item \textbf{Domain-certain Fine-Tuning:} By optimizing models for specialized domains such as fashion design or medical imaging, results for certain industries can be improved.
+    \item \textbf{Advanced Evaluation Criteria:} It might be feasible to better capture aspects of created images including texture, semantic accuracy, and originality by developing more intricate criteria.
+    \item \textbf{Model Optimization:} These models are made more useable for real-time applications by reducing computation costs through techniques like knowledge distillation and pruning.
+    \item \textbf{Ethical and Bias Considerations:} Future studies should address model biases and fairness to guarantee ethical use in text-to-image generation.
+\end{itemize}
+
+\section{Challenges Faced}
+We ran into a number of issues during the research that hindered our ability to compare diffusion models in a consistent and seamless manner:
+\begin{itemize}
+    \item \textbf{Problems with Model Compatibility and Configuration:} The study first employed the FLUX.1, Colors, and Stable Diffusion models. Later additions of more recent versions, such as FLUX.1-dev, SD 3.5 Medium, and Stable Diffusion 3 Medium, made it more difficult to configure various model architectures and guarantee consistent input-output compatibility.
+    \item \textbf{Performance Variability:} Direct comparisons were challenging due to the models’ performance variability in areas like image quality, text-to-image alignment, and variety.
+    \item \textbf{Data and Prompt Generation:} In order to improve the descriptiveness of the Conceptual Captions dataset, sophisticated models such as Microsoft Florence-2 were employed, which increased processing complexity and time.
+    \item \textbf{Computational Constraints:} The increased complexity of newer models led to longer inference times, and even with quantized versions, the inference time remained a bottleneck for generating large sets of images.
+    \item \textbf{Limitations of Open-Source Models:} The study was limited to open-source models, which, while accessible, lacked certain proprietary optimizations and features that could have improved performance and customization.
 \end{itemize}
 
 \section{Conclusion}
